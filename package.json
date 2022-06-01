@@ -26,7 +26,7 @@
     "react-chartjs-2": "^2.7.6",
     "react-dom": "^16.8.4",
     "react-jvectormap": "0.0.6",
-    "react-router": "^5.0.0",
+    "react-router": "^6.3.0",
     "react-router-dom": "^5.0.0",
     "reactstrap": "^8.10.0",
     "serve": "^13.0.2"
