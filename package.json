@@ -4,7 +4,7 @@
         "private": true,
         "homepage": "https://www.rockwelltransport.com/home",
         "dependencies": {
-                "@apollo/client": "~3.4.0",
+                "@apollo/client": "~3.7.6",
                 "@testing-library/jest-dom": "^5.14.1",
                 "@testing-library/react": "^11.2.7",
                 "@testing-library/user-event": "^12.8.3",
