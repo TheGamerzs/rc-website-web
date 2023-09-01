@@ -1,6 +1,5 @@
 import * as Api from '../../../library/Api/api';
 
-
 import { Button, Form, Input } from 'reactstrap';
 import React, { useEffect, useState } from 'react';
 
@@ -42,6 +41,7 @@ const TruckingScreen = () => {
 	}
 
 	async function getData() {
+		setDataError(false);
 		const apiStorageData = await Api.getStorages().catch(err => {
 			setDataError(true);
 			console.error(err);
@@ -123,7 +123,59 @@ const TruckingScreen = () => {
 
 	return (
 		<div className="container w-auto p-3">
-			{!storageData || !itemData ? (
+			{dataError ? (
+				<div>
+					<LoadingIcon />
+
+					<h2>Error retrieving your statistics</h2>
+					<p>Your public API key was invalid or not found.</p>
+					<p>
+						Public API keys are free-of-charge and, by providing your public API
+						key, you allow outside services to access your information on your
+						behalf.
+					</p>
+					<p>
+						If you have your public API key, enter it in the box below and hit
+						'Submit'.
+					</p>
+					<p>To retrieve your public API key, follow these steps:</p>
+					<ol>
+						<li>Open the chat in Transport Tycoon</li>
+						<li>Type /api public copy</li>
+						<li>Copy the API key</li>
+						<li>Paste it into the box below and click 'Submit'.</li>
+					</ol>
+
+					<p>To generate a new public API key, follow these steps:</p>
+					<ol>
+						<li>Open the chat in Transport Tycoon</li>
+						<li>Type /api public generate</li>
+						<li>Copy the API key</li>
+						<li>Paste it into the box below, and click 'Submit'.</li>
+					</ol>
+
+					<Form noValidate autoComplete="off">
+						<Input
+							type="text"
+							value={publicKeyVal}
+							onChange={e =>
+								setPublicKeyVal(
+									e.target.value
+										.replace(/\n/g, '')
+										.replace(
+											/([\uE000-\uF8FF]|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDDFF])/g,
+											''
+										)
+								)
+							}
+							valid={!!publicKeyVal}
+							invalid={!publicKeyVal}
+							placeholder="Your public API key"
+						/>
+						<Button onClick={handleSetPublicKey}>Submit</Button>
+					</Form>
+				</div>
+			) : !storageData || !itemData ? (
 				<div
 					className="d-flex justify-content-center align-items-center"
 					style={{ height: '100vh' }}>
@@ -207,59 +259,6 @@ const TruckingScreen = () => {
 						/>
 					</div>
 				</>
-			)}
-			{dataError && (
-				<div>
-					<LoadingIcon />
-
-					<h2>Error retrieving your statistics</h2>
-					<p>Your public API key was invalid or not found.</p>
-					<p>
-						Public API keys are free-of-charge and, by providing your public API
-						key, you allow outside services to access your information on your
-						behalf.
-					</p>
-					<p>
-						If you have your public API key, enter it in the box below and hit
-						'Submit'.
-					</p>
-					<p>To retrieve your public API key, follow these steps:</p>
-					<ol>
-						<li>Open the chat in Transport Tycoon</li>
-						<li>Type /api public copy</li>
-						<li>Copy the API key</li>
-						<li>Paste it into the box below and click 'Submit'.</li>
-					</ol>
-
-					<p>To generate a new public API key, follow these steps:</p>
-					<ol>
-						<li>Open the chat in Transport Tycoon</li>
-						<li>Type /api public generate</li>
-						<li>Copy the API key</li>
-						<li>Paste it into the box below, and click 'Submit'.</li>
-					</ol>
-
-					<Form noValidate autoComplete="off">
-						<Input
-							type="text"
-							value={publicKeyVal}
-							onChange={e =>
-								setPublicKeyVal(
-									e.target.value
-										.replace(/\n/g, '')
-										.replace(
-											/([\uE000-\uF8FF]|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDDFF])/g,
-											''
-										)
-								)
-							}
-							valid={!!publicKeyVal}
-							invalid={!publicKeyVal}
-							placeholder="Your public API key"
-						/>
-						<Button onClick={handleSetPublicKey}>Submit</Button>
-					</Form>
-				</div>
 			)}
 		</div>
 	);
