@@ -57,7 +57,6 @@ const ItemStorage = props => {
 			);
 		});
 	};
-
 	return (
 		<>
 			<div
@@ -83,6 +82,7 @@ const ItemStorage = props => {
 						</div>
 					</div>
 				)}
+
 			</div>
 			<br />
 		</>

@@ -1,5 +1,6 @@
 import * as Api from '../../../library/Api/api';
 
+
 import { Button, Form, Input } from 'reactstrap';
 import React, { useEffect, useState } from 'react';
 
@@ -207,7 +208,6 @@ const TruckingScreen = () => {
 					</div>
 				</>
 			)}
-
 			{dataError && (
 				<div>
 					<LoadingIcon />
