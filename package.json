@@ -2,7 +2,7 @@
 	"name": "rc-website",
 	"version": "1.0.0",
 	"private": true,
-	"homepage": "https://www.rockwelltransport.com/home",
+	"homepage": "https://www.rockwelltransport.com",
 	"dependencies": {
 		"@apollo/client": "~3.4.0",
 		"@testing-library/react": "^11.2.7",
@@ -15,6 +15,7 @@
 		"datatables.net-datetime": "^1.1.0",
 		"dotenv": "^16.0.3",
 		"eslint-plugin-flowtype": "^8.0.3",
+		"express": "^4.19.2",
 		"graphql": "^14.1.1",
 		"history": "^4.9.0",
 		"jarallax": "^2.1.4",
