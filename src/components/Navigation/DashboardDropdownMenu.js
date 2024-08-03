@@ -33,32 +33,13 @@ const DashboardDropdownMenu = ({ history, authorizedUser, routeName }) => {
 					<i className={'bi bi-house'} style={Styles.icon} />
 					Home
 				</DropdownItem>
-				<DropdownItem divider />
 				<DropdownItem
-					href="/home/dashboard/company"
-					onClick={e => redirect(e, '/home/dashboard/company')}
-					active={routeName === 'Company'}>
+					href="/home/dashboard/leaderboard"
+					onClick={e => redirect(e, '/home/dashboard/leaderboard')}
+					active={routeName === 'Leaderboard'}>
 					<i className={'bi bi-kanban'} style={Styles.icon} />
-					Management
+					Leaderboard
 				</DropdownItem>
-				<PermRender perms={[3, 2, 1]} authorizedUser={authorizedUser}>
-					<DropdownItem
-						href="/home/dashboard/payout"
-						onClick={e => redirect(e, '/home/dashboard/payout')}
-						active={routeName === 'Payout'}>
-						<i className={'bi bi-wallet'} style={Styles.icon} />
-						Payout
-					</DropdownItem>
-				</PermRender>
-				<PermRender perms={[3, 2]} authorizedUser={authorizedUser}>
-					<DropdownItem
-						href="/home/dashboard/hire"
-						onClick={e => redirect(e, '/home/dashboard/hire')}
-						active={routeName === 'Applications'}>
-						<i className={'bi bi-file-person'} style={Styles.icon} />
-						Applications
-					</DropdownItem>
-				</PermRender>
 			</DropdownMenu>
 		</UncontrolledDropdown>
 	);

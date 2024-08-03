@@ -1,4 +1,3 @@
-import { Button } from 'reactstrap';
 import '../../assets/css/mobirise-icons.css';
 import '../../assets/css/mobirise-icons-bold.css';
 import '../../assets/css/social-icons.css';
@@ -11,7 +10,6 @@ const NavigationBar = ({ history }) => {
 	const HomePage = () => history.push('/');
 	const ProfilePage = () => history.push('/home/profile');
 	const TToolsPage = () => history.push('/home/ttools');
-	const ApplyPage = () => history.push('/home/apply');
 
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const [isTop, setIsTop] = useState(true);
@@ -82,22 +80,6 @@ const NavigationBar = ({ history }) => {
 							}}></span>
 						TTools
 					</a>
-					<Button
-						onClick={ApplyPage}
-						className="btn btn-sm btn-primary h5 pl-4 pr-4"
-						style={{
-							backgroundColor: '#ff8600',
-							borderColor: '#ff8600',
-							fontSize: '1.2rem',
-							borderRadius: '100px',
-						}}>
-						<span
-							className="mbrib-edit mr-2"
-							style={{
-								fontSize: '1.6rem',
-							}}></span>
-						Apply Now!
-					</Button>
 				</form>
 			</div>
 			{dropdownOpen ? (
@@ -128,17 +110,6 @@ const NavigationBar = ({ history }) => {
 								}}></span>
 							TTools
 						</a>
-						<Button
-							onClick={ApplyPage}
-							className="btn btn-sm btn-primary h5 pl-4 pr-4"
-							style={{
-								backgroundColor: '#ff8600',
-								borderColor: '#ff8600',
-								fontSize: '1.2rem',
-								borderRadius: '100px',
-							}}>
-							Apply Now!
-						</Button>
 					</form>
 				</div>
 			) : null}

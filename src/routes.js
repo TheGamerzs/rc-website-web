@@ -1,8 +1,6 @@
-import ApplicationsScreen from './components/Dashboard/Applications/ApplicationsScreen';
-import ApplyScreen from './components/Apply/ApplyScreen';
 import BizMapScreen from './components/TTools/Biz/map/BizMapScreen';
 import BizScreen from './components/TTools/Biz/BizScreen';
-import CompanyManagementScreen from './components/Dashboard/Management/CompanyManagementScreen';
+import LeaderboardScreen from './components/Dashboard/Management/LeaderboardScreen';
 import CompletionistScreen from './components/TTools/Completionist/CompletionistScreen';
 import DashboardScreen from './components/Dashboard/Home/DashboardScreen';
 import ErrorPage from './components/_common/ErrorPage';
@@ -11,7 +9,6 @@ import IndexScreen from './components/Index/IndexScreen';
 import LoginScreen from './components/Authentication/LoginScreen';
 import LogoutScreen from './components/Authentication/LogoutScreen';
 import PIGSScreen from './components/Index/PIGSScreen';
-import PayoutScreen from './components/Dashboard/Payout/PayoutScreen';
 import ProfileScreen from './components/Profile/ProfileScreen';
 import StorageMapScreen from './components/TTools/Storages/map/StorageMapScreen';
 import StoragesScreen from './components/TTools/Storages/StoragesScreen';
@@ -55,12 +52,7 @@ const routes = [
 		component: HomeScreen,
 		layout: '/home',
 	},
-	{
-		path: '/apply',
-		name: 'Apply',
-		component: ApplyScreen,
-		layout: '/home',
-	},
+
 	{
 		path: '/dashboard',
 		name: 'Dashboard Home',
@@ -68,21 +60,9 @@ const routes = [
 		layout: '/home',
 	},
 	{
-		path: '/dashboard/company',
-		name: 'Company',
-		component: CompanyManagementScreen,
-		layout: '/home',
-	},
-	{
-		path: '/dashboard/hire',
-		name: 'Applications',
-		component: ApplicationsScreen,
-		layout: '/home',
-	},
-	{
-		path: '/dashboard/payout',
-		name: 'Payout',
-		component: PayoutScreen,
+		path: '/dashboard/leaderboard',
+		name: 'Leaderboard',
+		component: LeaderboardScreen,
 		layout: '/home',
 	},
 	{

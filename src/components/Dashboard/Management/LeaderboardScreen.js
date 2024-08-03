@@ -2,8 +2,6 @@ import * as queries from '../../../apollo/queries';
 
 import React, { useEffect } from 'react';
 
-import ApplyNow from '../../_common/ApplyNow';
-import CompanyCurrentMembersTable from './CompanyCurrentMembersTable';
 import CompanyMembersTable from './CompanyMembersTable';
 import { Container } from 'reactstrap';
 import LoadingIcon from '../../_presentational/LoadingIcon';
@@ -12,9 +10,9 @@ import PermRender from '../../_common/PermRender';
 import TopTurninForm from './TopTurninForm';
 import { useQuery } from '@apollo/client';
 
-const CompanyManagementScreen = () => {
+const LeaderboardScreen = () => {
 	useEffect(() => {
-		document.title = `RC - Management`;
+		document.title = `RC - Leaderboard`;
 	}, []);
 
 	const { loading, error, data } = useQuery(queries.GET_AUTH_USER);
@@ -27,30 +25,18 @@ const CompanyManagementScreen = () => {
 
 	return (
 		<Container>
-			<PermRender perms={[3, 2]} authorizedUser={authorizedUser}>
-				<h1>Company Members</h1>
-				<CompanyMembersTable
-					user={authorizedUser}
-					perms={authorizedUser.permission}
-				/>
-			</PermRender>
-			<PermRender perms={[1]} authorizedUser={authorizedUser}>
-				<h1>Company Members</h1>
-				<CompanyCurrentMembersTable user={authorizedUser} />
-			</PermRender>
+			<h1>Company Members</h1>
+			<CompanyMembersTable user={authorizedUser} />
+
 			<PermRender perms={[3]} authorizedUser={authorizedUser}>
 				<h1>Managers Cashouts</h1>
 				<ManagerCashoutContainer />
 			</PermRender>
-			<PermRender perms={[3, 2]} authorizedUser={authorizedUser}>
-				<h1>Get Top Turnins</h1>
-				<TopTurninForm />
-			</PermRender>
-			<PermRender perms={[0]} authorizedUser={authorizedUser}>
-				<ApplyNow />
-			</PermRender>
+
+			<h1>Get Top Turnins</h1>
+			<TopTurninForm />
 		</Container>
 	);
 };
 
-export default CompanyManagementScreen;
+export default LeaderboardScreen;

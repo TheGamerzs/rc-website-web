@@ -23,12 +23,11 @@ const CompanyMembersTable = props => {
 		const D3 = D2 - new Date(member.deadline); // difference between deadline and today
 
 		return (
-			<tr key={key} className={D3 >= 0 ? 'table-secondary' : null}>
+			<tr key={key}>
 				<th scope="row">{member.rank}</th>
 				<td
 					data-search={`${member.in_game_id} ${member.in_game_name} ${member.discord_id}`}>
 					({member.in_game_id}) {member.in_game_name}
-					<EditInGameButton member={member} refetch={props.refetch} />
 				</td>
 				<td>
 					<FormattedNumber num={member.rts.vouchers} />
@@ -39,11 +38,7 @@ const CompanyMembersTable = props => {
 				<td
 					data-order={member.company}
 					data-search={`${member.company} ${member.manager ? 'manager' : ''}`}>
-					<CompanySelector
-						member={member}
-						perms={props.perms}
-						refetch={props.refetch}
-					/>
+					<CompanySelector member={member} refetch={props.refetch} />
 				</td>
 				<td data-order={new Date(member.last_turnin).toISOString()}>
 					{turninString.join(' ')}
@@ -52,11 +47,6 @@ const CompanyMembersTable = props => {
 					className="mx-auto text-center"
 					data-order={new Date(member.deadline).toISOString()}>
 					{dateString.join(' ')}
-
-					<EditDeadlineButton member={member} />
-				</td>
-				<td>
-					<DetailsButton member={member} />
 				</td>
 			</tr>
 		);
@@ -112,5 +102,4 @@ const Headers = [
 	'Company',
 	'Last Turnin Date',
 	'Deadline',
-	'Details',
 ];

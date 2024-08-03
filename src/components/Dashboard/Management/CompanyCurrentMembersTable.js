@@ -16,7 +16,7 @@ const CompanyCurrentMembersTable = () => {
 				<td>{member.rts.vouchers}</td>
 				<td>{member.pigs.vouchers}</td>
 				<td>
-					{member.company === 'fired' ? 'Yeeted' : member.company.toUpperCase()}
+					{member.company === 'fired' ? 'yeeted' : member.company.toUpperCase()}
 				</td>
 				{member.last_turnin ? (
 					<td data-order={new Date(member.last_turnin).toISOString()}>

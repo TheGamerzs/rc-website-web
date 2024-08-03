@@ -39,7 +39,7 @@ const CompanyMembersFilter = props => {
 			<Button color="pigs" active={pigs} onClick={() => setPigs(!pigs)}>
 				PIGS
 			</Button>
-			<Button color="yeet" active={fired} onClick={() => setFired(!fired)}>
+			<Button color="yeeted" active={fired} onClick={() => setFired(!fired)}>
 				YEETED
 			</Button>
 		</ButtonGroup>
