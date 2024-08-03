@@ -1,6 +1,8 @@
 import LoginButton from './LoginButton';
 import React, { useEffect } from 'react';
 
+import logo from '../../assets/img/logo/logo_rc-376x226.png';
+
 const LoginScreen = () => {
 	useEffect(() => {
 		document.body.classList.toggle('login-page');
@@ -10,7 +12,7 @@ const LoginScreen = () => {
 		<div className="login-page">
 			<div className="d-flex align-items-center flex-column">
 				<img
-					src="https://www.rockwelltransport.com/assets/images/logo-rc-376x226.png"
+					src={logo}
 					alt="RC Logo"
 					style={{
 						height: '226px',
