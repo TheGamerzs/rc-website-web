@@ -83,44 +83,44 @@
   box-shadow: 0 0 0 0.2rem rgba(255, 183, 128, 0.5) !important
 }
 
-.btn-yeet {
+.btn-yeeted {
     color: #fff !important;
     background-color: #910101 !important;
     border-color: #910101 !important
 }
 
-.btn-yeet:hover {
+.btn-yeeted:hover {
     color: #fff !important;
     background-color: #e12e1c !important;
     border-color: #d62c1a !important
 }
 
-.btn-yeet:focus.active,
-.btn-yeet.focus.active {
+.btn-yeeted:focus.active,
+.btn-yeeted.focus.active {
     color: #fff !important;
     border-color: #fff !important;
     -webkit-box-shadow: 0 0 0 0.2rem rgba(235, 103, 89, 0.5) !important;
     box-shadow: 0 0 0 0.2rem rgba(235, 103, 89, 0.5) !important
 }
 
-.btn-yeet.disabled,
-.btn-yeet:disabled {
+.btn-yeeted.disabled,
+.btn-yeeted:disabled {
     color: #fff !important;
     background-color: #E74C3C !important;
     border-color: #E74C3C !important
 }
 
-.btn-yeet:not(:disabled):not(.disabled):active,
-.btn-yeet:not(:disabled):not(.disabled).active,
-.show>.btn-yeet.dropdown-toggle {
+.btn-yeeted:not(:disabled):not(.disabled):active,
+.btn-yeeted:not(:disabled):not(.disabled).active,
+.show>.btn-yeeted.dropdown-toggle {
     color: #fff !important;
     background-color: #d62c1a !important;
     border-color: #fff !important
 }
 
-.btn-yeet:not(:disabled):not(.disabled):active:focus,
-.btn-yeet:not(:disabled):not(.disabled).active:focus,
-.show>.btn-yeet.dropdown-toggle:focus {
+.btn-yeeted:not(:disabled):not(.disabled):active:focus,
+.btn-yeeted:not(:disabled):not(.disabled).active:focus,
+.show>.btn-yeeted.dropdown-toggle:focus {
     -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 183, 128, 0.5) !important;
     box-shadow: 0 0 0 0.2rem rgba(255, 183, 128, 0.5) !important
 }
