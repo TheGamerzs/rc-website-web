@@ -35,22 +35,18 @@ const ServerRow = props => {
 		Api.getServerPlayers(props.server)
 			.then(response => {
 				let members = [];
-				let heistCount = 0;
 
 				response.players.forEach(player => {
 					if (props.members[player[2]]) {
 						members.push(player);
 					}
 
-					if (player[5] === 'P.I.G.S. Robberrery') {
-						heistCount++;
-					}
+					
 				});
 
 				setServerData({
 					uptime: response.server.uptime,
 					members: members,
-					num_heisters: heistCount,
 					dxp: !response.server.dxp[0]
 						? 'No'
 						: toTimeFormat(response.server.dxp[2] + response.server.dxp[3]),
@@ -75,9 +71,7 @@ const ServerRow = props => {
 				<td>
 					<LoadingIcon />
 				</td>
-				<td>
-					<LoadingIcon />
-				</td>
+				
 				<td>
 					<LoadingIcon />
 				</td>
@@ -95,7 +89,6 @@ const ServerRow = props => {
 		return (
 			<tr>
 				<td>{props.name}</td>
-				<td>0</td>
 				<td>0</td>
 				<td>OFFLINE</td>
 				<td>No</td>
@@ -130,13 +123,7 @@ const ServerRow = props => {
 						<FormattedNumber num={serverData.members.length} />
 					)}
 				</td>
-				<td>
-					{serverData.num_heisters === 0 ? (
-						'None'
-					) : (
-						<FormattedNumber num={serverData.num_heisters} />
-					)}
-				</td>
+				
 				<td>{serverData.uptime}</td>
 				<td>{serverData.dxp}</td>
 				<td>

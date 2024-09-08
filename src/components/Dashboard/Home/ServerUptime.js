@@ -26,7 +26,6 @@ const ServerUptime = () => {
 				<tr>
 					<th scope="col">Server</th>
 					<th scope="col">Members</th>
-					<th scope="col">Heisters</th>
 					<th scope="col">Uptime</th>
 					<th scope="col">Dxp</th>
 					<th scope="col">Names</th>
