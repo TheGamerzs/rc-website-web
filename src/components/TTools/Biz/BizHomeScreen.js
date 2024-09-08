@@ -26,7 +26,7 @@ const BizHomeScreen = props => {
 	const toggleNavbar = () => setCollapsed(!collapsed);
 
 	const [bizLevel, setBizLevel] = useState(
-		<LoadingIcon inline sizeClass={'glimpsicon-16'} />
+		<LoadingIcon inline sizeClass={'glimpsicon-16'} />,
 	);
 	const [factionTax, setFactionTax] = useState(null);
 	const [totalBonus, setSumTotalBonus] = useState('LOADING');
@@ -49,7 +49,7 @@ const BizHomeScreen = props => {
 					response.data.gaptitudes_v = response.data.gaptitudes;
 
 				setBizLevel(
-					calculateLevel(response.data.gaptitudes_v.business.business)
+					calculateLevel(response.data.gaptitudes_v.business.business),
 				);
 			})
 			.catch(err => {
@@ -69,29 +69,23 @@ const BizHomeScreen = props => {
 				let sumTotalInvestment = 0;
 
 				businesses.forEach(business => {
-					const businessTier = response.businesses[business.id] || 0;
-					const totalBonus =
-						businessTier > 0
-							? Math.floor(
-									business.bonus + business.bonus * (businessTier - 1) * 0.25
-							  )
-							: 0;
+					const hasBrought = response.businesses[business.id] || 0;
+					let totalBonus = 0;
+
+					if (hasBrought) {
+						sumTotalInvestment += business.cost;
+						totalBonus = Math.floor(
+							business.bonus + business.bonus * (hasBrought - 1) * 0.25,
+						);
+					}
 
 					sumTotalBonus += totalBonus;
-
-					sumTotalInvestment += businessTier * business.cost;
 				});
 				setSumTotalBonus(sumTotalBonus);
 				setSumTotalInvestment(sumTotalInvestment);
 
 				const formatter = (business, i) => {
 					const businessTier = response.businesses[business.id] || 0;
-					const totalBonus =
-						businessTier > 0
-							? Math.floor(
-									business.bonus + business.bonus * (businessTier - 1) * 0.25
-							  )
-							: 0;
 
 					return (
 						<tr key={i}>
@@ -103,15 +97,6 @@ const BizHomeScreen = props => {
 							</td>
 							<td>
 								$<FormattedNumber num={business.bonus} />
-							</td>
-							<td>
-								$<FormattedNumber num={totalBonus} />
-							</td>
-							<td>
-								$<FormattedNumber num={businessTier * business.cost} />
-							</td>
-							<td>
-								$<FormattedNumber num={(100 - businessTier) * business.cost} />
 							</td>
 							<td>
 								<a
@@ -131,14 +116,14 @@ const BizHomeScreen = props => {
 						headers={headers}
 						data={businesses}
 						format={formatter}
-					/>
+					/>,
 				);
 			})
 			.catch(err => {
 				console.error(err);
 				if (err.error === 'Tycoon Servers Offline') {
 					alert(
-						'Unable to get your data because the Tycoon servers are offline. Please try again later.'
+						'Unable to get your data because the Tycoon servers are offline. Please try again later.',
 					);
 				} else {
 					alert('There was an error getting their tycoon businesses');
@@ -296,11 +281,8 @@ const config = {
 const headers = [
 	'Required Level',
 	'Business Name',
-	'Tier',
+	'Brought',
 	'Cost',
 	'Bonus (per 24h)',
-	'Total Bonus',
-	'Total Spent',
-	'Remaining cost for T100',
 	'Location',
 ];
