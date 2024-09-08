@@ -24,9 +24,8 @@ const HomeScreen = props => {
 	const [collapsed, setCollapsed] = useState(false);
 	const toggleNavbar = () => setCollapsed(!collapsed);
 
-	const [company, setCompany] = useState(<LoadingIcon inline />);
 	const [playerListLevel, setPlayerListLevel] = useState(
-		<LoadingIcon inline />
+		<LoadingIcon inline />,
 	);
 	const [job, setJob] = useState(<LoadingIcon inline />);
 	const [health, setHealth] = useState(0);
@@ -58,7 +57,6 @@ const HomeScreen = props => {
 		</Progress>
 	);
 	const [business, setBusiness] = useState(loadingSkill('Business'));
-	const [gambling, setGambling] = useState(loadingSkill('Gambling'));
 	const [ems, setEms] = useState(loadingSkill('EMS'));
 	const [fire, setFire] = useState(loadingSkill('Fire'));
 	const [farming, setFarming] = useState(loadingSkill('Farming'));
@@ -78,7 +76,7 @@ const HomeScreen = props => {
 	const [postOp, setPostOp] = useState(loadingSkill('PostOP'));
 	const [trucking, setTrucking] = useState(loadingSkill('Trucking'));
 	const [completionist, setCompletionist] = useState(
-		loadingSkill('Completionist')
+		loadingSkill('Completionist'),
 	);
 
 	const [inventory, setInventory] = useState(<LoadingIcon />);
@@ -265,9 +263,7 @@ const HomeScreen = props => {
 							fire: 10,
 							ems: 10,
 						},
-						casino: {
-							casino: 10,
-						},
+
 						hunting: {
 							skill: 10,
 						},
@@ -304,34 +300,6 @@ const HomeScreen = props => {
 				if (!response.data.gaptitudes_v)
 					response.data.gaptitudes_v = response.data.gaptitudes;
 
-				const companys = {
-					corp11: 'PIGS',
-					corp2: 'CoCo',
-					corp6: 'IA',
-					corp9: 'RTS',
-				};
-				const groups = JSON.stringify(response.data.groups);
-				let company = false;
-				for (let i = 0; i < Object.keys(companys).length; i++) {
-					if (groups.includes(Object.keys(companys)[i])) {
-						company = companys[Object.keys(companys)[i]];
-						break;
-					}
-				}
-
-				if (company) {
-					setCompany(company);
-				} else {
-					if (
-						response.data.licenses &&
-						hasCooldown(response.data.licenses.corp_cooldown)
-					) {
-						setCompany(hasCooldown(response.data.licenses.corp_cooldown));
-					} else {
-						setCompany('None');
-					}
-				}
-
 				const overallXp =
 					parseFloat(response.data.gaptitudes.physical.strength || 10) +
 					parseFloat(response.data.gaptitudes.piloting.piloting || 10) +
@@ -343,7 +311,6 @@ const HomeScreen = props => {
 					parseFloat(response.data.gaptitudes.ems.fire || 10) +
 					parseFloat(response.data.gaptitudes.farming.farming || 10) +
 					parseFloat(response.data.gaptitudes.farming.fishing || 10) +
-					parseFloat(response.data.gaptitudes.casino.casino || 10) +
 					parseFloat(response.data.gaptitudes.trucking.garbage || 10) +
 					parseFloat(response.data.gaptitudes.piloting.heli || 10) +
 					parseFloat(response.data.gaptitudes.hunting.skill || 10) +
@@ -378,98 +345,100 @@ const HomeScreen = props => {
 				setDxp(response.data.licenses && !!response.data.licenses.exp_week);
 				setBoost(response.data.licenses && !!response.data.licenses.exp_15);
 				setBonus(
-					response.data.licenses && !!response.data.licenses.faq_bonus_exp_5
+					response.data.licenses && !!response.data.licenses.faq_bonus_exp_5,
 				);
 				setLinked(
-					response.data.licenses && !!response.data.groups.discord_linked
+					response.data.licenses && !!response.data.groups.discord_linked,
 				);
 				setVoice(
-					response.data.licenses && !!response.data.licenses.discord_voice
+					response.data.licenses && !!response.data.licenses.discord_voice,
 				);
 
 				setBusiness(
 					addSkill(
 						response.data.gaptitudes_v.business.business,
 						100,
-						'Business'
-					)
+						'Business',
+					),
 				);
-				setGambling(
-					addSkill(response.data.gaptitudes_v.casino.casino, 100, 'Gambling')
-				);
+
 				setEms(addSkill(response.data.gaptitudes_v.ems.ems, 100, 'EMS'));
 				setFire(addSkill(response.data.gaptitudes_v.ems.fire, 100, 'Fire'));
 				setFarming(
-					addSkill(response.data.gaptitudes_v.farming.farming, 100, 'Farming')
+					addSkill(response.data.gaptitudes_v.farming.farming, 100, 'Farming'),
 				);
 				setFishing(
-					addSkill(response.data.gaptitudes_v.farming.fishing, 100, 'Fishing')
+					addSkill(response.data.gaptitudes_v.farming.fishing, 100, 'Fishing'),
 				);
 				setMining(
-					addSkill(response.data.gaptitudes_v.farming.mining, 100, 'Mining')
+					addSkill(response.data.gaptitudes_v.farming.mining, 100, 'Mining'),
 				);
 				setHunting(
-					addSkill(response.data.gaptitudes_v.hunting.skill, 100, 'Hunting')
+					addSkill(response.data.gaptitudes_v.hunting.skill, 100, 'Hunting'),
 				);
 				setStrength(
-					addSkill(response.data.gaptitudes_v.physical.strength, 30, 'Strength')
+					addSkill(
+						response.data.gaptitudes_v.physical.strength,
+						30,
+						'Strength',
+					),
 				);
 				setCargo(
 					addSkill(
 						response.data.gaptitudes_v.piloting.cargos,
 						100,
-						'Cargo Pilot'
-					)
+						'Cargo Pilot',
+					),
 				);
 				setHeli(
 					addSkill(
 						response.data.gaptitudes_v.piloting.heli,
 						100,
-						'Helicopter Pilot'
-					)
+						'Helicopter Pilot',
+					),
 				);
 				setAirline(
 					addSkill(
 						response.data.gaptitudes_v.piloting.piloting,
 						100,
-						'Airline Pilot'
-					)
+						'Airline Pilot',
+					),
 				);
 				setPlayer(
-					addSkill(response.data.gaptitudes_v.player.player, 100, 'Player')
+					addSkill(response.data.gaptitudes_v.player.player, 100, 'Player'),
 				);
 				setRacing(
-					addSkill(response.data.gaptitudes_v.player.racing, 100, 'Racing')
+					addSkill(response.data.gaptitudes_v.player.racing, 100, 'Racing'),
 				);
 				setBus(
-					addSkill(response.data.gaptitudes_v.train.bus, 100, 'Bus Driver')
+					addSkill(response.data.gaptitudes_v.train.bus, 100, 'Bus Driver'),
 				);
 				setConductor(
-					addSkill(response.data.gaptitudes_v.train.train, 100, 'Conductor')
+					addSkill(response.data.gaptitudes_v.train.train, 100, 'Conductor'),
 				);
 				setGarbage(
 					addSkill(
 						response.data.gaptitudes_v.trucking.garbage,
 						100,
-						'Garbage Collections'
-					)
+						'Garbage Collections',
+					),
 				);
 				setMechanic(
 					addSkill(
 						response.data.gaptitudes_v.trucking.mechanic,
 						100,
-						'Mechanic'
-					)
+						'Mechanic',
+					),
 				);
 				setPostOp(
-					addSkill(response.data.gaptitudes_v.trucking.postop, 100, 'PostOP')
+					addSkill(response.data.gaptitudes_v.trucking.postop, 100, 'PostOP'),
 				);
 				setTrucking(
 					addSkill(
 						response.data.gaptitudes_v.trucking.trucking,
 						100,
-						'Trucking'
-					)
+						'Trucking',
+					),
 				);
 				const totalLevels =
 					calculateLevel(response.data.gaptitudes.physical.strength || 10) +
@@ -482,7 +451,6 @@ const HomeScreen = props => {
 					calculateLevel(response.data.gaptitudes.ems.fire || 10) +
 					calculateLevel(response.data.gaptitudes.farming.farming || 10) +
 					calculateLevel(response.data.gaptitudes.farming.fishing || 10) +
-					calculateLevel(response.data.gaptitudes.casino.casino || 10) +
 					calculateLevel(response.data.gaptitudes.trucking.garbage || 10) +
 					calculateLevel(response.data.gaptitudes.piloting.heli || 10) +
 					calculateLevel(response.data.gaptitudes.hunting.skill || 10) +
@@ -585,14 +553,14 @@ const HomeScreen = props => {
 										config: config.both,
 									},
 								]}
-							/>
+							/>,
 						);
 					})
 					.catch(err => {
 						console.error(err);
 						if (err.error === 'Tycoon Servers Offline') {
 							alert(
-								'Unable to get your backpack because the Tycoon servers are offline. Please try again later.'
+								'Unable to get your backpack because the Tycoon servers are offline. Please try again later.',
 							);
 						} else {
 							alert('There was an error getting your backpack');
@@ -603,7 +571,7 @@ const HomeScreen = props => {
 				console.error(err);
 				if (err.error === 'Tycoon Servers Offline') {
 					alert(
-						'Unable to get your data because the Tycoon servers are offline. Please try again later.'
+						'Unable to get your data because the Tycoon servers are offline. Please try again later.',
 					);
 				} else {
 					alert('There was an error getting their tycoon data');
@@ -621,7 +589,7 @@ const HomeScreen = props => {
 					console.error(err);
 					if (err.error === 'Tycoon Servers Offline') {
 						alert(
-							'Unable to get their in game ID because the Tycoon servers are offline. Please try again later.'
+							'Unable to get their in game ID because the Tycoon servers are offline. Please try again later.',
 						);
 					} else {
 						alert('Unable to get their in game ID');
@@ -701,9 +669,6 @@ const HomeScreen = props => {
 									<h4 className="my-4">Player ID: {playerID}</h4>
 								</NavItem>
 								<NavItem>
-									<p>Company: {company}</p>
-								</NavItem>
-								<NavItem>
 									<p>Playerlist Level: {playerListLevel}</p>
 								</NavItem>
 								<NavItem>
@@ -760,8 +725,8 @@ const HomeScreen = props => {
 												premium === 'LOADING'
 													? null
 													: premium
-													? 'text-success'
-													: 'text-danger'
+														? 'text-success'
+														: 'text-danger'
 											}>
 											{premium === 'LOADING' ? (
 												<LoadingIcon inline />
@@ -781,8 +746,8 @@ const HomeScreen = props => {
 												dxp === 'LOADING'
 													? null
 													: dxp
-													? 'text-success'
-													: 'text-danger'
+														? 'text-success'
+														: 'text-danger'
 											}>
 											{dxp === 'LOADING' ? (
 												<LoadingIcon inline />
@@ -802,8 +767,8 @@ const HomeScreen = props => {
 												boost === 'LOADING'
 													? null
 													: boost
-													? 'text-success'
-													: 'text-danger'
+														? 'text-success'
+														: 'text-danger'
 											}>
 											{boost === 'LOADING' ? (
 												<LoadingIcon inline />
@@ -823,8 +788,8 @@ const HomeScreen = props => {
 												bonus === 'LOADING'
 													? null
 													: bonus
-													? 'text-success'
-													: 'text-danger'
+														? 'text-success'
+														: 'text-danger'
 											}>
 											{bonus === 'LOADING' ? (
 												<LoadingIcon inline />
@@ -844,8 +809,8 @@ const HomeScreen = props => {
 												linked === 'LOADING'
 													? null
 													: linked
-													? 'text-success'
-													: 'text-danger'
+														? 'text-success'
+														: 'text-danger'
 											}>
 											{linked === 'LOADING' ? (
 												<LoadingIcon inline />
@@ -865,8 +830,8 @@ const HomeScreen = props => {
 												voice === 'LOADING'
 													? null
 													: voice
-													? 'text-success'
-													: 'text-danger'
+														? 'text-success'
+														: 'text-danger'
 											}>
 											{voice === 'LOADING' ? (
 												<LoadingIcon inline />
@@ -887,8 +852,6 @@ const HomeScreen = props => {
 
 					<h4>Business Level:</h4>
 					{business}
-					<h4>Casino:</h4>
-					{gambling}
 					<h4>Emergency Levels:</h4>
 					{ems}
 					{fire}
