@@ -6,9 +6,8 @@ import {
 	UncontrolledDropdown,
 } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
-import PermRender from '../_common/PermRender';
 
-const DashboardDropdownMenu = ({ history, authorizedUser, routeName }) => {
+const DashboardDropdownMenu = ({ history,  routeName }) => {
 	function redirect(event, page) {
 		event.preventDefault();
 		history.push(page);

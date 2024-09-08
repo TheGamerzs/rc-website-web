@@ -3,9 +3,7 @@ import React, { useState } from 'react';
 import CompanyMembersFilter from './CompanyMembersFilter';
 import CompanySelector from './CompanyMemberButtons/CompanySelector';
 import CustomPaginatedTable from '../../_common/CustomPaginatedTable';
-import DetailsButton from './CompanyMemberButtons/DetailsButton';
-import EditDeadlineButton from './CompanyMemberButtons/EditDeadlineButton';
-import EditInGameButton from './CompanyMemberButtons/EditInGameButton';
+
 import FormattedNumber from '../../_common/FormattedNumber';
 import { GET_PAGINATED_ALL_MEMBER_DETAILS } from '../../../apollo/paginatedQueries';
 
@@ -19,8 +17,6 @@ const CompanyMembersTable = props => {
 		const dateString = new Date(member.deadline).toDateString().split(' ');
 		dateString.shift();
 
-		const D2 = new Date(); // curent date
-		const D3 = D2 - new Date(member.deadline); // difference between deadline and today
 
 		return (
 			<tr key={key}>
