@@ -28,10 +28,12 @@ const CompletionistScreen = () => {
 				data[key] = inv[key];
 			});
 
-			Object.keys(backpack).forEach(key => {
-				if (data[key]) data[key].amount += backpack[key].amount;
-				else data[key] = backpack[key];
-			});
+			if (backpack) {
+				Object.keys(backpack).forEach(key => {
+					if (data[key]) data[key].amount += backpack[key].amount;
+					else data[key] = backpack[key];
+				});
+			}
 
 			const rtsCardsNames = Object.keys(data).filter(key => {
 				return key.includes('rts_card|');
@@ -136,8 +138,8 @@ const CompletionistScreen = () => {
 										.replace(/\n/g, '')
 										.replace(
 											/([\uE000-\uF8FF]|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDDFF])/g,
-											''
-										)
+											'',
+										),
 								)
 							}
 							valid={!!publicKeyVal}
