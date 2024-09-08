@@ -102,44 +102,6 @@ const HomeScreen = props => {
 		}
 	}
 
-	function timeConverter(UNIX_timestamp) {
-		const a = new Date(UNIX_timestamp * 1000);
-		const months = [
-			'Jan',
-			'Feb',
-			'Mar',
-			'Apr',
-			'May',
-			'Jun',
-			'Jul',
-			'Aug',
-			'Sep',
-			'Oct',
-			'Nov',
-			'Dec',
-		];
-		const year = a.getFullYear();
-		const month = months[a.getMonth()];
-		const date = a.getDate();
-		const hour = a.getHours();
-		const min = a.getMinutes();
-		let sec = a.getSeconds();
-		if (sec.toString().length === 1) sec = '0' + sec;
-		return date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
-	}
-
-	function hasCooldown(val) {
-		if (val >= 1) {
-			if (val > Math.round(new Date().getTime() / 1000)) {
-				return timeConverter(val);
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
-	}
-
 	function calculateLevel(currentLevelExp) {
 		return Math.floor((Math.sqrt(1 + (8 * currentLevelExp) / 5) - 1) / 2);
 	}
@@ -688,7 +650,6 @@ const HomeScreen = props => {
 									</Progress>
 									<hr className="my-2" />
 								</NavItem>
-
 								<NavItem>
 									<p style={Style.statHeader}>Player Inventory Capacity:</p>
 									<Progress multi style={Style.capacityBarContainer}>
