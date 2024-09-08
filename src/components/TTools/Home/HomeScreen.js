@@ -688,19 +688,7 @@ const HomeScreen = props => {
 									</Progress>
 									<hr className="my-2" />
 								</NavItem>
-								{/* <NavItem>
-                                    <p style={Style.statHeader}>Hunger:</p>
-                                    <Progress multi style={Style.hungerBarContainer}>
-                                        <Progress bar value={hunger} min={0} max={100} style={Style.hungerBar} />
-                                    </Progress>
-                                </NavItem>
-                                <NavItem>
-                                    <p style={Style.statHeader}>Thirst:</p>
-                                    <Progress multi style={Style.thirstBarContainer}>
-                                        <Progress bar value={thirst} min={0} max={100} style={Style.thirstBar} />
-                                    </Progress>
-                                    <hr className="my-2" />
-                                </NavItem> */}
+
 								<NavItem>
 									<p style={Style.statHeader}>Player Inventory Capacity:</p>
 									<Progress multi style={Style.capacityBarContainer}>
