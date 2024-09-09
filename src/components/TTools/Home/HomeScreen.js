@@ -204,6 +204,10 @@ const HomeScreen = props => {
 		setPlayerID(gameId);
 		Api.getTycoonData(gameId)
 			.then(response => {
+				if (response.error) {
+					alert(response.description);
+					return;
+				}
 				let hasPremium = false;
 				if (
 					response.data.groups.license_premium || // Brought in-game
