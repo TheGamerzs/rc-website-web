@@ -4,8 +4,6 @@ import { Table } from 'reactstrap';
 import $ from 'jquery';
 import DataTable from 'datatables.net-bs4';
 
-DataTable.defaults.dom =
-	"<'row'<'col-12 col-md-6'l><'col-12 col-md-6'f>><'row'<'col-12'tr>><'row'<'col-12 col-md-5'i><'col-12 col-md-7'p>>";
 $.fn.dataTable = DataTable;
 $.fn.dataTableSettings = DataTable.settings;
 DataTable.ext.classes.sWrapper = `dataTables_wrapper dt-bootstrap4`;

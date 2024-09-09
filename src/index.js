@@ -9,9 +9,6 @@ import { createRoot } from 'react-dom/client';
 
 import { createBrowserHistory } from 'history';
 
-// import "bootswatch/dist/darkly/bootstrap.min.css";
-// import "bootstrap/dist/css/bootstrap.css";
-
 import IndexScreen from './components/Index/IndexScreen';
 import PIGSScreen from './components/Index/PIGSScreen';
 import RTSScreen from './components/Index/RTSScreen';
@@ -48,13 +45,12 @@ const RcApp = () => {
 };
 
 const container = document.getElementById('root');
-const root = createRoot(container); 
+const root = createRoot(container);
 
 root.render(
 	<ApolloProvider client={client}>
 		<Suspense fallback={<div>Loading...</div>}>
 			<RcApp />
 		</Suspense>
-	</ApolloProvider>
-	
+	</ApolloProvider>,
 );
