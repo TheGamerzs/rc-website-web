@@ -15,7 +15,7 @@
 		"datatables.net-datetime": "^1.1.0",
 		"dotenv": "^16.0.3",
 		"eslint-plugin-flowtype": "^8.0.3",
-		"express": "^4.19.2",
+		"express": "^4.21.0",
 		"graphql": "^14.1.1",
 		"history": "^4.9.0",
 		"jarallax": "^2.1.4",
@@ -29,8 +29,8 @@
 		"react-chartjs-2": "^2.7.6",
 		"react-dom": "^16.8.4",
 		"react-jvectormap": "0.0.6",
-		"react-router": "^5.0.0",
-		"react-router-dom": "^5.0.0",
+		"react-router": "^6.0.0",
+		"react-router-dom": "^6.0.0",
 		"reactstrap": "^8.10.0"
 	},
 	"devDependencies": {
