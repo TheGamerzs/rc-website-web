@@ -458,3 +458,9 @@ export const GET_TOP_TURNINS = gql(`
         }
     }
 `);
+
+export const GET_AUTH_USER_PUBLIC_KEY = gql(`
+    query GetAuthUserPublicKey {
+        authorizedUserPublicKey
+    }
+`);
