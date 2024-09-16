@@ -6,7 +6,6 @@ import DataTable from 'datatables.net-bs4';
 
 $.fn.dataTable = DataTable;
 $.fn.dataTableSettings = DataTable.settings;
-DataTable.ext.classes.sWrapper = `dataTables_wrapper dt-bootstrap4`;
 $.fn.dataTableExt = DataTable.ext;
 DataTable.$ = $;
 $.fn.DataTable.ext.pager.numbers_length = 5;
