@@ -12,6 +12,7 @@ import { createBrowserHistory } from 'history';
 import IndexScreen from './components/Index/IndexScreen';
 import PIGSScreen from './components/Index/PIGSScreen';
 import RTSScreen from './components/Index/RTSScreen';
+import { Toaster } from 'react-hot-toast';
 
 const hist = createBrowserHistory();
 const cache = new InMemoryCache({ addTypename: true });
@@ -51,6 +52,22 @@ root.render(
 	<ApolloProvider client={client}>
 		<Suspense fallback={<div>Loading...</div>}>
 			<RcApp />
+			<Toaster
+				toastOptions={{
+					success: {
+						style: {
+							background: 'green',
+							color: 'white',
+						},
+					},
+					error: {
+						style: {
+							background: 'red',
+							color: 'white',
+						},
+					},
+				}}
+			/>
 		</Suspense>
 	</ApolloProvider>,
 );

@@ -4,6 +4,7 @@ import LoadingIcon from '../../_presentational/LoadingIcon';
 import CompanyTables from '../../_common/CompanyTables';
 import FormattedNumber from '../../_common/FormattedNumber';
 import * as Api from '../../../library/Api/api';
+import toast from 'react-hot-toast';
 
 const ManagerCashoutTable = props => {
 	const [payMember, setPayMember] = useState(null);
@@ -56,7 +57,7 @@ const ManagerCashoutTable = props => {
 						$
 						<FormattedNumber
 							num={Math.floor(
-								(cashout.rts_cashout * 10000 - cashout.rts_cashout_worth) * 0.5
+								(cashout.rts_cashout * 10000 - cashout.rts_cashout_worth) * 0.5,
 							)}
 						/>
 					</td>
@@ -66,7 +67,7 @@ const ManagerCashoutTable = props => {
 							num={
 								Math.floor(
 									(cashout.rts_cashout * 10000 - cashout.rts_cashout_worth) *
-										0.5
+										0.5,
 								) + cashout.rts_cashout_worth
 							}
 						/>
@@ -114,7 +115,7 @@ const ManagerCashoutTable = props => {
 						<FormattedNumber
 							num={Math.floor(
 								(cashout.pigs_cashout * 10000 - cashout.pigs_cashout_worth) *
-									0.5
+									0.5,
 							)}
 						/>
 					</td>
@@ -124,7 +125,7 @@ const ManagerCashoutTable = props => {
 							num={
 								Math.floor(
 									(cashout.pigs_cashout * 10000 - cashout.pigs_cashout_worth) *
-										0.5
+										0.5,
 								) + cashout.pigs_cashout_worth
 							}
 						/>
@@ -179,11 +180,11 @@ const ManagerCashoutTable = props => {
 							num={
 								Math.floor(
 									(cashout.rts_cashout * 10000 - cashout.rts_cashout_worth) *
-										0.5
+										0.5,
 								) +
 								Math.floor(
 									(cashout.pigs_cashout * 10000 - cashout.pigs_cashout_worth) *
-										0.5
+										0.5,
 								)
 							}
 						/>
@@ -194,12 +195,12 @@ const ManagerCashoutTable = props => {
 							num={
 								Math.floor(
 									(cashout.rts_cashout * 10000 - cashout.rts_cashout_worth) *
-										0.5
+										0.5,
 								) +
 								cashout.rts_cashout_worth +
 								(Math.floor(
 									(cashout.pigs_cashout * 10000 - cashout.pigs_cashout_worth) *
-										0.5
+										0.5,
 								) +
 									cashout.pigs_cashout_worth)
 							}
@@ -238,7 +239,7 @@ const ManagerCashoutTable = props => {
 			})
 			.catch(err => {
 				console.error(err);
-				alert('There was an error paying this manager.');
+				toast.error('There was an error paying this manager.');
 			})
 			.finally(() => {
 				setLoading(false);

@@ -11,6 +11,7 @@ import {
 	Row,
 } from 'reactstrap';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 import CustomTable from '../../_common/CustomTable';
 import FormattedNumber from '../../_common/FormattedNumber';
@@ -19,11 +20,11 @@ import { useLazyQuery } from '@apollo/client';
 
 const TopTurninForm = () => {
 	const [getTopTurnins, { loading, error, data }] = useLazyQuery(
-		queries.GET_TOP_TURNINS
+		queries.GET_TOP_TURNINS,
 	);
 	if (error) {
 		console.error(error);
-		alert('There was an error getting top turnins');
+		toast.error('There was an error getting top turnins');
 	}
 	const [company, setCompany] = useState('rts');
 	const [players, setPlayers] = useState(5);

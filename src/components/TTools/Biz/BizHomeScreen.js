@@ -15,6 +15,7 @@ import {
 	Row,
 } from 'reactstrap';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 import CustomTable from '../../_common/CustomTable';
 import FormattedNumber from '../../_common/FormattedNumber';
@@ -122,11 +123,11 @@ const BizHomeScreen = props => {
 			.catch(err => {
 				console.error(err);
 				if (err.error === 'Tycoon Servers Offline') {
-					alert(
+					toast.error(
 						'Unable to get your data because the Tycoon servers are offline. Please try again later.',
 					);
 				} else {
-					alert('There was an error getting their tycoon businesses');
+					toast.error('There was an error getting their tycoon businesses');
 				}
 			});
 	}, []);

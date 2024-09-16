@@ -19,6 +19,7 @@ import FilterableTables from '../../_common/FilterableTables';
 import FormattedNumber from '../../_common/FormattedNumber';
 import LoadingIcon from '../../_presentational/LoadingIcon';
 import $ from 'jquery';
+import toast from 'react-hot-toast';
 
 const HomeScreen = props => {
 	const [collapsed, setCollapsed] = useState(false);
@@ -205,7 +206,8 @@ const HomeScreen = props => {
 		Api.getTycoonData(gameId)
 			.then(response => {
 				if (response.error) {
-					alert(response.description);
+					//toast.error(response.description);
+					toast.error(response.description);
 					return;
 				}
 				let hasPremium = false;
@@ -525,22 +527,24 @@ const HomeScreen = props => {
 					.catch(err => {
 						console.error(err);
 						if (err.error === 'Tycoon Servers Offline') {
-							alert(
+							toast.error(
 								'Unable to get your backpack because the Tycoon servers are offline. Please try again later.',
 							);
+							toast.error('');
 						} else {
-							alert('There was an error getting your backpack');
+							toast.error('There was an error getting your backpack');
+							//toast.error('There was an error getting your backpack');
 						}
 					});
 			})
 			.catch(err => {
 				console.error(err);
 				if (err.error === 'Tycoon Servers Offline') {
-					alert(
+					toast.error(
 						'Unable to get your data because the Tycoon servers are offline. Please try again later.',
 					);
 				} else {
-					alert('There was an error getting their tycoon data');
+					toast.error('There was an error getting their tycoon data');
 				}
 			});
 	}
@@ -554,11 +558,11 @@ const HomeScreen = props => {
 				.catch(err => {
 					console.error(err);
 					if (err.error === 'Tycoon Servers Offline') {
-						alert(
+						toast.error(
 							'Unable to get their in game ID because the Tycoon servers are offline. Please try again later.',
 						);
 					} else {
-						alert('Unable to get their in game ID');
+						toast.error('Unable to get their in game ID');
 					}
 				});
 		} else {

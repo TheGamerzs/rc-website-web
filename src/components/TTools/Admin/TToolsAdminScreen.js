@@ -22,10 +22,10 @@ const TToolsAdminScreen = () => {
 
 	return (
 		<React.Fragment>
-			<PermRender ttperms={[3]} authorizedUser={authorizedUser}>
+			<PermRender ttperms={[3, 2, 1, 0]} authorizedUser={authorizedUser}>
 				<AdminPanel authorizedUser={authorizedUser} />
 			</PermRender>
-			<PermRender ttperms={[2, 1, 0]} authorizedUser={authorizedUser}>
+			<PermRender ttperms={[5]} authorizedUser={authorizedUser}>
 				<Redirect to="/home/ttools" />
 			</PermRender>
 		</React.Fragment>
