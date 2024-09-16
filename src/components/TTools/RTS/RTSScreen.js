@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 import LoadingIcon from '../../_presentational/LoadingIcon';
 import VehicleCard from './Vehicle';
+import toast from 'react-hot-toast';
 
 const CompletionistScreen = () => {
 	document.title = `RC - Completionist`;
@@ -54,9 +55,18 @@ const CompletionistScreen = () => {
 	}
 
 	function handleSetPublicKey() {
-		if (!publicKeyVal) return;
+		Api.setPublicApiKey(publicKeyVal).then(r => {
+			if (!r?.status == 'success') {
+				toast.error('Failed to update your public key');
+				console.log(JSON.stringify(r));
+				return;
+			}
+			if (!publicKeyVal) {
+				toast.success('Sucessfully cleared your public key');
+				return;
+			}
 
-		Api.setPublicApiKey(publicKeyVal).then(() => {
+			toast.success('Successfully set your public key');
 			getData();
 		});
 	}
