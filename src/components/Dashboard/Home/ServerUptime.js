@@ -26,7 +26,6 @@ const ServerUptime = () => {
 				<tr>
 					<th scope="col">Server</th>
 					<th scope="col">Members</th>
-					<th scope="col">Heisters</th>
 					<th scope="col">Uptime</th>
 					<th scope="col">Dxp</th>
 					<th scope="col">Names</th>
@@ -36,21 +35,16 @@ const ServerUptime = () => {
 				<ServerRow
 					server={'main'}
 					id={'2epova'}
-					name={'NY-1'}
+					name={'EU-1'}
 					members={members}
 				/>
 				<ServerRow
 					server={'beta'}
 					id={'njyvop'}
-					name={'NY-2 (Beta)'}
+					name={'EU-2 (Beta)'}
 					members={members}
 				/>
-				<ServerRow
-					server={'event'}
-					id={'w8j4eb'}
-					name={'Event Server'}
-					members={members}
-				/>
+				
 			</tbody>
 		</Table>
 	);

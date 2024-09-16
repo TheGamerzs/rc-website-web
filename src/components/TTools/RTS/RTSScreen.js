@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 import LoadingIcon from '../../_presentational/LoadingIcon';
 import VehicleCard from './Vehicle';
+import toast from 'react-hot-toast';
 
 const CompletionistScreen = () => {
 	document.title = `RC - Completionist`;
@@ -28,10 +29,12 @@ const CompletionistScreen = () => {
 				data[key] = inv[key];
 			});
 
-			Object.keys(backpack).forEach(key => {
-				if (data[key]) data[key].amount += backpack[key].amount;
-				else data[key] = backpack[key];
-			});
+			if (backpack) {
+				Object.keys(backpack).forEach(key => {
+					if (data[key]) data[key].amount += backpack[key].amount;
+					else data[key] = backpack[key];
+				});
+			}
 
 			const rtsCardsNames = Object.keys(data).filter(key => {
 				return key.includes('rts_card|');
@@ -52,9 +55,18 @@ const CompletionistScreen = () => {
 	}
 
 	function handleSetPublicKey() {
-		if (!publicKeyVal) return;
+		Api.setPublicApiKey(publicKeyVal).then(r => {
+			if (!r?.status == 'success') {
+				toast.error('Failed to update your public key');
+				console.log(JSON.stringify(r));
+				return;
+			}
+			if (!publicKeyVal) {
+				toast.success('Sucessfully cleared your public key');
+				return;
+			}
 
-		Api.setPublicApiKey(publicKeyVal).then(() => {
+			toast.success('Successfully set your public key');
 			getData();
 		});
 	}
@@ -136,8 +148,8 @@ const CompletionistScreen = () => {
 										.replace(/\n/g, '')
 										.replace(
 											/([\uE000-\uF8FF]|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDDFF])/g,
-											''
-										)
+											'',
+										),
 								)
 							}
 							valid={!!publicKeyVal}

@@ -8,7 +8,7 @@ import FormattedNumber from '../../../_common/FormattedNumber';
 
 const DetailsButton = props => {
 	const [getMemberPayouts, { payoutsLoading, error, data }] = useLazyQuery(
-		queries.GET_MEMBER_PAYOUTS
+		queries.GET_MEMBER_PAYOUTS,
 	);
 	if (error) console.error(error);
 	const { member } = props;
@@ -20,7 +20,7 @@ const DetailsButton = props => {
 		},
 		onError: err => {
 			console.error(err);
-			alert('There was an error changing their welcome status');
+			toast.error('There was an error changing their welcome status');
 		},
 	});
 

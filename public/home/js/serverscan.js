@@ -9,7 +9,7 @@ function initPlayers() {
 	setTimeout(() => {
 		clearInterval(scanInt);
 		clearInterval(scanInactInt);
-		alert('Timed out after 5 minutes, refresh the page to continue.');
+		toast.error('Timed out after 5 minutes, refresh the page to continue.');
 	}, 300000); // 5mins
 }
 
@@ -79,7 +79,7 @@ function getServerData(checkbox) {
 						[res.players[i][3].y, res.players[i][3].x],
 						{
 							icon: generateIcon(res.players[i][4], res.players[i][5]),
-						}
+						},
 					)
 						.addTo(map)
 						.bindPopup(parsePlayerInfo(res.players[i], checkbox))
@@ -94,7 +94,7 @@ function getServerData(checkbox) {
 								opacity: 0.8,
 								direction: 'top',
 								className: colorClass,
-							}
+							},
 						);
 
 					if (followedMember == res.players[i][2]) {
@@ -132,7 +132,7 @@ function getServerData(checkbox) {
 					});
 					playerMarkers[res.players[i][2]].nova.timestamp = looptimestamp;
 					playerMarkers[res.players[i][2]].bindPopup(
-						parsePlayerInfo(res.players[i], checkbox)
+						parsePlayerInfo(res.players[i], checkbox),
 					);
 
 					if (
@@ -140,7 +140,7 @@ function getServerData(checkbox) {
 						res.players[i][4]['vehicle_model']
 					) {
 						playerMarkers[res.players[i][2]].setIcon(
-							generateIcon(res.players[i][4], res.players[i][5])
+							generateIcon(res.players[i][4], res.players[i][5]),
 						);
 					}
 
@@ -161,21 +161,21 @@ function parsePlayerInfo(data, checkbox) {
 	return `<div class="markerHead" data-ingameid="${data[2]}">Player Info</div>
             <b>In Game:</b> ${data[0]} (${data[2]})<hr>
             <b>Company:</b> ${memberDetails[data[2]].Company.toUpperCase()} ${
-		managerIDs.includes(data[2])
-			? '(Manager)'
-			: memberDetails[data[2]].Company != 'Applicant'
-			? `(${memberDetails[data[2]].Rank})`
-			: ''
-	}<hr>
+							managerIDs.includes(data[2])
+								? '(Manager)'
+								: memberDetails[data[2]].Company != 'Applicant'
+									? `(${memberDetails[data[2]].Rank})`
+									: ''
+						}<hr>
             <b>Job:</b> ${data[5].name || 'N/A'}<hr>
             ${
 							data[4]['vehicle_label'] === 'NULL'
 								? ''
 								: `<b>Vehicle</b>: ${data[4]['vehicle_name']} (${
 										vehicle_classes[data[4]['vehicle_class']]
-								  })<hr>`
+									})<hr>`
 						}
             <b>${checkbox[1]}</b> <a href="fivem://connect/${
-		checkbox[3]
-	}?pure_1" title="Join: ${checkbox[0]}">JOIN</a>`;
+							checkbox[3]
+						}?pure_1" title="Join: ${checkbox[0]}">JOIN</a>`;
 }

@@ -36,9 +36,9 @@ const EditInGameButton = props => {
 			},
 			onError: err => {
 				console.error(err);
-				alert('There was an error changing their ID');
+				toast.error('There was an error changing their ID');
 			},
-		}
+		},
 	);
 
 	const toggle = () => setModal(!modal);

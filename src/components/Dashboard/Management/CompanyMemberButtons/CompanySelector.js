@@ -2,7 +2,7 @@ import { Button } from 'reactstrap';
 import React from 'react';
 
 const CompanySelector = props => {
-	const { member, perms } = props;
+	const { member } = props;
 
 	function getCompanyButton() {
 		let mCompany = member.company;

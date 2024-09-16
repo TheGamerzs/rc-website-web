@@ -1,18 +1,18 @@
 import BizMapScreen from './components/TTools/Biz/map/BizMapScreen';
 import BizScreen from './components/TTools/Biz/BizScreen';
 import LeaderboardScreen from './components/Dashboard/Management/LeaderboardScreen';
-import CompletionistScreen from './components/TTools/Completionist/CompletionistScreen';
+import RTSScreen from './components/TTools/RTS/RTSScreen';
 import DashboardScreen from './components/Dashboard/Home/DashboardScreen';
 import ErrorPage from './components/_common/ErrorPage';
 import HomeScreen from './components/Home/HomeScreen';
 import IndexScreen from './components/Index/IndexScreen';
 import LoginScreen from './components/Authentication/LoginScreen';
 import LogoutScreen from './components/Authentication/LogoutScreen';
-import PIGSScreen from './components/Index/PIGSScreen';
+import PIGSHomeScreen from './components/Index/PIGSScreen';
 import ProfileScreen from './components/Profile/ProfileScreen';
 import StorageMapScreen from './components/TTools/Storages/map/StorageMapScreen';
 import StoragesScreen from './components/TTools/Storages/StoragesScreen';
-import RTSScreen from './components/Index/RTSScreen';
+import RTSHomeScreen from './components/Index/RTSScreen';
 import TToolsAdminScreen from './components/TTools/Admin/TToolsAdminScreen';
 import TToolsScreen from './components/TTools/Home/TToolsScreen';
 import TruckingScreen from './components/TTools/Trucking/TruckingScreen';
@@ -27,12 +27,12 @@ const routes = [
 	{
 		path: '/rts',
 		name: 'RTS',
-		component: RTSScreen,
+		component: RTSHomeScreen,
 	},
 	{
 		path: '/pigs',
 		name: 'PIGS',
-		component: PIGSScreen,
+		component: PIGSHomeScreen,
 	},
 	{
 		path: '/login',
@@ -114,9 +114,9 @@ const routes = [
 		layout: '/home',
 	},
 	{
-		path: '/ttools/completionist',
-		name: 'Completionist',
-		component: CompletionistScreen,
+		path: '/ttools/rts',
+		name: 'R.T.S',
+		component: RTSScreen,
 		layout: '/home',
 	},
 	{

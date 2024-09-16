@@ -52,11 +52,11 @@ const TToolsDropdownMenu = ({ history, routeName }) => {
 				</DropdownItem>
 				<DropdownItem divider />
 				<DropdownItem
-					href="/home/ttools/completionist"
-					onClick={e => redirect(e, '/home/ttools/completionist')}
-					active={routeName === 'Completionist'}>
-					<i className={'bi bi-check-circle'} style={Styles.icon} />
-					Completionist
+					href="/home/ttools/rts"
+					onClick={e => redirect(e, '/home/ttools/rts')}
+					active={routeName === 'R.T.S'}>
+					<i className={'bi bi-key'} style={Styles.icon} />
+					R.T.S
 				</DropdownItem>
 			</DropdownMenu>
 		</UncontrolledDropdown>
