@@ -27,7 +27,7 @@
 		"react-apollo-hooks": "^0.4.3",
 		"react-bootstrap-sweetalert": "^4.4.1",
 		"react-chartjs-2": "^2.7.6",
-		"react-dom": "^16.8.4",
+		"react-dom": "^18.3.1",
 		"react-jvectormap": "0.0.6",
 		"react-router": "^5.0.0",
 		"react-router-dom": "^5.0.0",
